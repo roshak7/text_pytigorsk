@@ -17,13 +17,6 @@ mestoimenia = ["я", "ты", "он", "она", "оно", "а", "будто", "е
 with open(localfile, 'r', encoding='utf8') as f:
     text = f.read()
     sentences = text.split('.')
-    word_list = ['что', 'чтобы']
-    count = 0
-    for word in sentences:
-        for char in word:
-            if char.lower() in word_list:
-                count += 1
-
     for sentence in sentences:
         words = sentence.split(' ')
         words_counts.append(sentence)
@@ -41,6 +34,10 @@ with open(localfile, encoding="utf8") as file:
     text = text.replace(",", "").replace(".", "").replace("?", "").replace("!", "").replace(")", "").replace("(", "")
     text = text.lower()
     words = text.split()
+    count = 0
+    for w in words:
+        if w in mestoimenia:
+            count += 1
 
 # подготовка данных
 nums = [i for i in wordcounts]
